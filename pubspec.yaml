@@ -43,10 +43,12 @@ dependencies:
   add_to_cart_animation: ^0.0.7
   fluttertoast: ^8.1.1
   
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.10.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -98,3 +100,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+# Icone inicial do App => após a conclusão rodar no terminal ()
+flutter_icons:
+  Android: true
+  ios: true
+  image_path: "assets/app_images/app_icon.png"
+  remove_alpha_ios: true

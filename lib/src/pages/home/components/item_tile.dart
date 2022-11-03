@@ -24,6 +24,14 @@ class _ItemTileState extends State<ItemTile> {
 
   final UtilsServices utilsServices = UtilsServices();
 
+  IconData tileIcon = Icons.add_shopping_cart_outlined;
+
+  Future<void> switchIcon() async {
+    setState(() => tileIcon = Icons.check);
+    await Future.delayed(const Duration(milliseconds: 2000));
+    setState(() => tileIcon = Icons.add_shopping_cart_outlined);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -106,6 +114,7 @@ class _ItemTileState extends State<ItemTile> {
             child: Material(
               child: InkWell(
                 onTap: () {
+                  switchIcon();
                   widget.cartAnimationMethod(imageGk);
                 },
                 child: Ink(
@@ -114,8 +123,8 @@ class _ItemTileState extends State<ItemTile> {
                   decoration: BoxDecoration(
                     color: CustomColors.customSwatchColor,
                   ),
-                  child: const Icon(
-                    Icons.add_shopping_cart_outlined,
+                  child: Icon(
+                    tileIcon,
                     color: Colors.white,
                     size: 20,
                   ),
