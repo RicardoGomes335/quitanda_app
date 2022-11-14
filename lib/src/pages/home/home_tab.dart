@@ -3,6 +3,7 @@ import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
+import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
 import 'package:quitanda_app/src/pages/home/components/item_tile.dart';
 import 'package:quitanda_app/src/services/utils_services.dart';
 import 'components/category_tile.dart';
@@ -36,27 +37,7 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text.rich(
-          TextSpan(
-            style: const TextStyle(
-              fontSize: 30,
-            ),
-            children: [
-              TextSpan(
-                text: 'Quitanda',
-                style: TextStyle(
-                  color: CustomColors.customSwatchColor,
-                ),
-              ),
-              TextSpan(
-                text: 'App',
-                style: TextStyle(
-                  color: CustomColors.customContrastColor,
-                ),
-              ),
-            ],
-          ),
-        ),
+        title: const AppNameWidget(),
         // Carrinho Lateral superior direito
         actions: [
           Padding(
