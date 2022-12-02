@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quitanda_app/src/pages/auth/sign_screen.dart';
+//import 'package:quitanda_app/src/pages/auth/sign_screen.dart';
 import 'package:quitanda_app/src/pages/splash/splash_screen.dart';
 
 void main() {
