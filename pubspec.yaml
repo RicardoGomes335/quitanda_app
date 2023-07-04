@@ -36,12 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_text_kit: ^4.2.2
   mask_text_input_formatter: ^2.4.0
-  badges: ^2.0.3
+  badges: ^3.1.1
   intl: ^0.17.0
   http: ^0.13.5
   qr_flutter: ^4.0.0
   add_to_cart_animation: ^0.0.7
-  fluttertoast: ^8.1.1
+  fluttertoast: ^8.2.2
   shimmer: ^2.0.0
   
   

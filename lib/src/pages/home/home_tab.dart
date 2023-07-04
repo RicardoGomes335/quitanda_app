@@ -1,6 +1,6 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
 import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
@@ -63,8 +63,10 @@ class _HomeTabState extends State<HomeTab> {
             ),
             child: GestureDetector(
               onTap: () {},
-              child: Badge(
-                badgeColor: CustomColors.customContrastColor,
+              child: badges.Badge(
+                badgeStyle: badges.BadgeStyle(
+                  badgeColor: CustomColors.customContrastColor,
+                  ),
                 badgeContent: const Text(
                   '2',
                   style: TextStyle(
