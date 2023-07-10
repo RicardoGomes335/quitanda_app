@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
+import 'package:quitanda_app/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
 import 'package:quitanda_app/src/pages_routes/app_pages.dart';
 
@@ -12,6 +13,10 @@ class SignInScreen extends StatelessWidget {
 
   //Controlador do Form
   final _formKey = GlobalKey<FormState>();
+
+  // Controlador de campo de texto
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +87,7 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       //Email
                       CustomTextField(
+                        controller: emailController,
                         icon: Icons.email,
                         label: 'E-mail',
                         validator: (email) {
@@ -96,6 +102,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                       //Senha
                       CustomTextField(
+                        controller: passwordController,
                         icon: Icons.lock,
                         label: 'Senha',
                         isSecret: true,
@@ -112,22 +119,40 @@ class SignInScreen extends StatelessWidget {
                       // Botão de Entrar
                       SizedBox(
                         height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                          ),
-                          onPressed: () {
-                            _formKey.currentState!.validate();
-                            //Get.offNamed(PagesRoutes.baseRoute);
+                        child: GetX<AuthController>(
+                          builder: (authController) {
+                            return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                              ),
+                              onPressed: authController.isLoading.value
+                                  ? null
+                                  : () {
+                                      FocusScope.of(context).unfocus();
+                                      if (_formKey.currentState!.validate()) {
+                                        String email = emailController.text;
+                                        String password =
+                                            passwordController.text;
+
+                                        authController.signIn(
+                                            email: email, password: password);
+                                      } else {
+                                        print('Campos não válidos');
+                                      }
+                                      //Get.offNamed(PagesRoutes.baseRoute);
+                                    },
+                              child: authController.isLoading.value
+                                  ? const CircularProgressIndicator()
+                                  : const Text(
+                                      'Entrar',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                            );
                           },
-                          child: const Text(
-                            'Entrar',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
                         ),
                       ),
                       // esqueceu a Senha
