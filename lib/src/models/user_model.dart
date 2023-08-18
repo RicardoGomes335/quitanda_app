@@ -1,3 +1,4 @@
+
 part 'user_model.g.dart';
 
 class UserModel {
