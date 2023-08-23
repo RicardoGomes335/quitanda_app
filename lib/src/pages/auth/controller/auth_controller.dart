@@ -14,6 +14,11 @@ class AuthController extends GetxController {
   // Objeto do usuario
   UserModel user = UserModel();
 
+  Future<void> validateToken() async {
+    // recuperar o token que foi gerado localmente
+    //authRepository.validateToken(token);
+  }
+
   Future<void> signIn({
     required String email,
     required String password,
@@ -26,6 +31,7 @@ class AuthController extends GetxController {
     result.when(
       // Se o usuário tiver sucesso encaminha para página principal
       success: (user) {
+       
         this.user = user;
         Get.offAllNamed(PagesRoutes.baseRoute);
       },
